@@ -42,55 +42,14 @@ export class AppComponent implements OnInit{
   })
 
   constructor(config: NgbCarouselConfig, private modalService: NgbModal, private chatService: ChatService) {
-    chatService.messages.subscribe(
-      msg => {
-        console.log('Response from websocket server: ', msg)
-      }
-    )
 
     config.showNavigationArrows = true;
     config.showNavigationIndicators = true;
   }
 
-  sendMessage($event: KeyboardEvent){
-    let currentHour = (this.now.getHours() + ':' + this.now.getMinutes()).toString()
-    let message = {
-      author: 'User',
-      message: this.messageDetails.value['msg'],
-      time: currentHour
-    }
 
-    if($event.key === 'Enter'){
-      this.messageDetails.setValue({msg: ''})
-      this.pushMessage(message)
-      setTimeout(() => {
-        this.sendMessageAssistant()
-      }, 2000)
-    }
-  }
-
-  sendMessageAssistant(){
-    let currentHour = (this.now.getHours() + ':' + this.now.getMinutes()).toString()
-    if(this.counter === 3){
-      this.counter = 0
-    }
-    let message = {
-      author: 'Assistant',
-      message: this.messagesReply[this.counter],
-      time: currentHour
-    }
-    this.counter++
-    this.pushMessage(message)
-  }
 
   ngOnInit(){
-    let currentHour = (this.now.getHours() + ':' + this.now.getMinutes()).toString()
-    let message = {
-      author: 'Assistant',
-      message: 'Hello, user. How can I help you?',
-      time: currentHour
-    }
-    this.pushMessage(message)
     let images;
     for(let i = 0; i < this.loadImages.length; i++){
       images = {
@@ -98,11 +57,6 @@ export class AppComponent implements OnInit{
       }
       this.images.push(images)
     }
-  }
-
-  pushMessage(messageObj){
-    this.chatService.messages.next(messageObj)
-    this.messages.push(messageObj)
   }
 
   open(content) {

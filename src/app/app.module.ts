@@ -10,13 +10,17 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { ModalComponent } from './modal/modal.component';
 import { ChatService } from './chat.service';
 import { WebsocketService } from './websocket.service';
+import { ScreenAComponent } from './chats/screen-a/screen-a.component';
+import { ScreenBComponent } from './chats/screen-b/screen-b.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ModalComponent
+    ModalComponent,
+    ScreenAComponent,
+    ScreenBComponent
   ],
   imports: [
     BrowserModule,

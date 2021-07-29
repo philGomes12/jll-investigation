@@ -51,30 +51,16 @@
         [endSeconds]="100">
       </youtube-player>
     </div>
-  </div>
-  <hr> -->
-  <div class="container" style="border: 1px solid; background-color: #D0E1D4; padding-top: 30px; padding-bottom: 30px;">
-    <div class="row row-1" *ngFor="let msg of messages">
-      <div class="col-4" style="background-color: white; border-radius: 10px" *ngIf="msg?.author ==='Assistant'">
-        <span>{{msg?.author}} - {{msg?.time}}</span>
-        <p>{{msg?.message}}</p>
-      </div>
-      <div class="col-8" *ngIf="msg?.author ==='Assistant'"></div>
-      <div class="col-8" *ngIf="msg?.author !=='Assistant'"></div>
-      <div class="col-4 text-right" style="background-color: #dcf8c6; border-radius: 10px" *ngIf="msg?.author !=='Assistant'">
-        <span>{{msg?.author}} - {{msg?.time}}</span>
-        <p>{{msg?.message}}</p>
-      </div>
+  </div> -->
+  <hr>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <app-screen-a></app-screen-a>
     </div>
-  </div>
-  <div class="container">
-    <div class="row" style="padding-top: 20px;">
-      <div class="col-4" style="padding-right: 0px!important; padding-left: 0px!important;">
-        <form [formGroup]="messageDetails">
-          <h3><strong>Write down your message</strong></h3>
-          <textarea formControlName="msg" class="form-control" id="exampleFormControlTextarea1" rows="3" (keypress)="sendMessage($event)"></textarea>
-        </form>
-      </div>
+    <div class="col-6">
+      <app-screen-b></app-screen-b>
     </div>
   </div>
 </div>

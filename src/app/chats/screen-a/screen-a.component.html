@@ -1,0 +1,18 @@
+<div style="padding: 5px;color:aliceblue ;background-color: green;">
+  <b style="margin-left: 20px;">Chat A</b>
+</div>
+<div style=" background: url(../../assets/images/1e98e2595b3ee68a551f8dab037c00ec.jpg); padding: 10px">
+  <div *ngFor="let msg of messages">
+      <div class="col-6" *ngIf="msg?.author ==='User2'" style="margin-left: 10px; padding: 5px; background-color: rgba(240, 255, 255, 0.569);">
+          <p>{{msg?.message}}</p>
+      </div>
+      <div class="col-6" *ngIf="msg?.author ==='User1'" style="margin-top: 10px; margin-left: 170px; padding: 5px; background-color: rgba(10, 241, 164, 0.569); ">
+          <p>{{msg?.message}}</p>
+      </div>
+  </div>
+</div>
+<div style="padding: 5px; background-color: rgb(94, 91, 91)">
+  <form [formGroup]="messageDetails">
+      <textarea formControlName="msg" class="form-control" id="exampleFormControlTextarea1" rows="3" (keypress)="sendMessage($event)"></textarea>
+  </form>
+</div>
